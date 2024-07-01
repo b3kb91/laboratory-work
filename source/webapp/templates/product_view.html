@@ -4,7 +4,7 @@
         <div class="card-body">
             <img style="width: 250px;" src="{{ product.image }}">
             <br><br><h5 class="card-subtitle mb-2 text-body-secondary"><strong>{{ product.title }}</strong></h5>
-            <p class="card-text"><strong>{{ product.category }}</strong><br></p>
+            <p class="card-text"><strong>{{ product.category.title }}</strong><br></p>
             <p class="card-text"><strong>Price:</strong><br>{{ product.price }}$</p>
             <p class="card-text"><strong>{{ product.description }}</strong><br></p>
             <p class="card-text"><strong>Дата:</strong><br>{{ product.created_at }}</p>
