@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-
+from webapp.forms import ProductForm
 from webapp.models import Product, Category
 
 
@@ -52,3 +52,15 @@ def delete(request, *args, pk, **kwargs):
     product = get_object_or_404(Product, pk=pk)
     product.delete()
     return redirect("products_view")
+
+
+def product_edit_view(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    if request.method == "POST":
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            return redirect("product_view", pk=product.pk)
+    else:
+        form = ProductForm(instance=product)
+    return render(request, "product_edit_view.html", {"form": form})

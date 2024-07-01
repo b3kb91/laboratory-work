@@ -8,7 +8,8 @@
             <p class="card-text"><strong>Price:</strong><br>{{ product.price }}$</p>
             <p class="card-text"><strong>{{ product.description }}</strong><br></p>
             <p class="card-text"><strong>Дата:</strong><br>{{ product.created_at }}</p>
-            <br><a href="{% url 'delete' product.pk  %}" class="card-link text-danger">Delete</a>
+            <br><a href="{% url 'delete' product.pk  %}" class="card-link text-danger">Delete</a><br>
+            <br><a href="{% url 'product_edit_view' product.pk %}" class="card-link text-primary">Edit</a>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
