@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block links %}
+{% endblock %}
+{% block content %}
+
+<h1>Add Category</h1>
+
+
+<form action=" /categories/add" method="post">
+    {% csrf_token %}
+    <br><input type="text" name="title" placeholder="Title"/><br/><br>
+    <textarea class="text-content" name="description" placeholder="Description"></textarea><br/>
+    <br/>
+    <input type="submit" value="Add Category"/>
+</form>
+{% endblock %}

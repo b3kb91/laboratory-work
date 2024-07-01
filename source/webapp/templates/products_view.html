@@ -1,21 +1,20 @@
 {% extends "base.html" %}
 
 {% block title %}
-    <title>TODO_LIST</title>
+    <title>Products Views</title>
 {% endblock %}
 <br>
-<a href="create/">Создать задачу</a><br><br>
 <br>
 {% block content %}
     <div class="row">
-        {% for to_do in todos %}
+        {% for product in products %}
             <div class="class=col-12 col-md-6 col-lg-3">
                 <div class="card mt-3" style="width: 18rem;">
                     <div class="card-body">
-                    <h5 class="card-subtitle mb-2 text-body-secondary"><strong>Статус:</strong> {{ to_do.get_status_display }}</h5>
-                    <p class="card-text"><strong>Описание:</strong><br>{{ to_do.description }}</p>
-                    <p class="card-text"><strong>Дата:</strong><br>{{ to_do.date_completion }}</p>
-                    <a href="{% url 'todo_detail' to_do.pk %}" class="card-link">Детальный просмотр</a>
+                    <h5 class="card-subtitle mb-2 text-body-secondary"><strong>{{ product.title }}</strong></h5>
+                    <p class="card-text"><strong>{{ product.category }}</strong><br></p>
+                    <p class="card-text"><strong>{{ product.price }}</strong><br></p>
+                    <a href="{% url 'product_view' product.pk %}" class="card-link">see more>>></a>
                     </div>
                 </div>
             </div>

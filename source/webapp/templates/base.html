@@ -17,20 +17,13 @@
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container">
-        <a class="navbar-brand" href="{% url 'todo' %}">Главная</a>
+        <a class="navbar-brand" href="{% url 'products_view' %}">Главная</a>
+        <a class="navbar-brand" href="{% url 'category_add_view' %}">Создание категорий</a>
+        <a class="navbar-brand" href="{% url 'product_add_view' %}">Создание продуктов</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                {% block links %}
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'todo_create' %}">Создание задач</a>
-                    </li>
-                {% endblock %}
-            </ul>
-        </div>
     </div>
 </nav>
 
