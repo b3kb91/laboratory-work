@@ -1,82 +1,107 @@
 [
 {
-  "model": "webapp.category",
-  "pk": 4,
-  "fields": {
-    "title": "Стройматериалы",
-    "description": "Сюда входят: доски, пилы, шуруповерты и.т.д"
-  }
+    "model": "webapp.category",
+    "pk": 4,
+    "fields": {
+        "title": "Стройматериалы",
+        "description": "Сюда входят: доски, пилы, шуруповерты и.т.д"
+    }
 },
 {
-  "model": "webapp.category",
-  "pk": 5,
-  "fields": {
-    "title": "Продукты ",
-    "description": "Мясо, напитки, хлеб, масло"
-  }
+    "model": "webapp.category",
+    "pk": 5,
+    "fields": {
+        "title": "Продукты ",
+        "description": "Мясо, напитки, хлеб, масло"
+    }
 },
 {
-  "model": "webapp.category",
-  "pk": 6,
-  "fields": {
-    "title": "Курсы",
-    "description": "У нас есть курсы разного направления "
-  }
+    "model": "webapp.category",
+    "pk": 6,
+    "fields": {
+        "title": "Курсы",
+        "description": "У нас есть курсы разного направления "
+    }
 },
 {
-  "model": "webapp.category",
-  "pk": 7,
-  "fields": {
-    "title": "Телефон",
-    "description": null
-  }
+    "model": "webapp.category",
+    "pk": 7,
+    "fields": {
+        "title": "Телефон",
+        "description": null
+    }
 },
 {
-  "model": "webapp.product",
-  "pk": 2,
-  "fields": {
-    "title": "Закуп домой",
-    "description": "закуп продуктов домой составил :15000",
-    "created_at": "2024-07-01T10:09:09.798Z",
-    "price": "15000.00",
-    "image": "https://th.bing.com/th/id/OIP.rwPA4aEeLHD3FCE_YOM5LwHaFj?rs=1&pid=ImgDetMain",
-    "category": 5
-  }
+    "model": "webapp.category",
+    "pk": 8,
+    "fields": {
+        "title": "Горы",
+        "description": null
+    }
 },
 {
-  "model": "webapp.product",
-  "pk": 3,
-  "fields": {
-    "title": "Ремонт дома",
-    "description": "папа решил сделать дома капитальный ремонт",
-    "created_at": "2024-07-01T10:10:59.815Z",
-    "price": "10000.00",
-    "image": "https://th.bing.com/th/id/OIP.IX1k24LJWnpvfnXtYg83kwHaE8?w=1200&h=800&rs=1&pid=ImgDetMain",
-    "category": 4
-  }
+    "model": "webapp.product",
+    "pk": 2,
+    "fields": {
+        "title": "Закуп домой",
+        "description": "закуп продуктов домой составил :15000",
+        "created_at": "2024-07-01T10:09:09.798Z",
+        "price": "15000.00",
+        "image": "https://th.bing.com/th/id/OIP.rwPA4aEeLHD3FCE_YOM5LwHaFj?rs=1&pid=ImgDetMain",
+        "remains": 0,
+        "category": 5
+    }
 },
 {
-  "model": "webapp.product",
-  "pk": 4,
-  "fields": {
-    "title": "Python",
-    "description": "я начал ходить на курсы с ноября 2023 года и скоро закончу эти курсы",
-    "created_at": "2024-07-01T10:13:06.216Z",
-    "price": "18000.00",
-    "image": "https://th.bing.com/th/id/OIP.x9LQQj2YnlEMJHhgUaYQ7wHaEK?rs=1&pid=ImgDetMain",
-    "category": 7
-  }
+    "model": "webapp.product",
+    "pk": 3,
+    "fields": {
+        "title": "Ремонт дома",
+        "description": "папа решил сделать дома капитальный ремонт",
+        "created_at": "2024-07-01T10:10:59.815Z",
+        "price": "10000.00",
+        "image": "https://th.bing.com/th/id/OIP.IX1k24LJWnpvfnXtYg83kwHaE8?w=1200&h=800&rs=1&pid=ImgDetMain",
+        "remains": 0,
+        "category": 4
+    }
 },
 {
-  "model": "webapp.product",
-  "pk": 5,
-  "fields": {
-    "title": "Айфон",
-    "description": "айфон 13 про макс на 1тб",
-    "created_at": "2024-07-01T11:32:40.298Z",
-    "price": "12000.00",
-    "image": "https://th.bing.com/th/id/OIP.4K2BCgtDf_4ygabwn2F0YQAAAA?rs=1&pid=ImgDetMain",
-    "category": 7
-  }
+    "model": "webapp.product",
+    "pk": 4,
+    "fields": {
+        "title": "Python",
+        "description": "я начал ходить на курсы с ноября 2023 года и скоро закончу эти курсы",
+        "created_at": "2024-07-01T10:13:06.216Z",
+        "price": "18000.00",
+        "image": "https://th.bing.com/th/id/OIP.x9LQQj2YnlEMJHhgUaYQ7wHaEK?rs=1&pid=ImgDetMain",
+        "remains": 0,
+        "category": 7
+    }
+},
+{
+    "model": "webapp.product",
+    "pk": 5,
+    "fields": {
+        "title": "Айфон",
+        "description": "айфон 13 про макс на 1тб",
+        "created_at": "2024-07-01T11:32:40.298Z",
+        "price": "12000.00",
+        "image": "https://th.bing.com/th/id/OIP.4K2BCgtDf_4ygabwn2F0YQAAAA?rs=1&pid=ImgDetMain",
+        "remains": 0,
+        "category": 7
+    }
+},
+{
+    "model": "webapp.product",
+    "pk": 6,
+    "fields": {
+        "title": "Элбьрус",
+        "description": "гора эльбрус - самая высокая гора в россии",
+        "created_at": "2024-07-05T14:27:21.411Z",
+        "price": "12000.00",
+        "image": "https://th.bing.com/th/id/R.e1b82219d600871dcddc3a91b8d38087?rik=1WoSMTXSiZ1A1A&pid=ImgRaw&r=0",
+        "remains": 1009,
+        "category": 5
+    }
 }
 ]

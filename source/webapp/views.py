@@ -10,40 +10,54 @@ def index(request):
 
 def product_add_view(request):
     if request.method == "GET":
-        categories = Category.objects.all()
-        return render(request, "product_add_view.html", context={"categories": categories})
+        form = ProductForm()
+        return render(request, "product_add_view.html", context={"form": form})
     else:
         description = request.POST.get("description")
         if description == '':
             description = None
 
-        product = Product.objects.create(
-            title=request.POST.get("title"),
-            price=request.POST.get("price"),
-            image=request.POST.get("image"),
-            category=request.POST.get("category"),
-            description=description,
-            category_id=request.POST.get("category_id"),
+        form = ProductForm(request.POST)
+        if form.is_valid():
+            product = form.save()
+            product.description = description
+            return redirect("product_view", pk=product.pk)
+
+        return render(
+            request,
+            "product_add_view.html",
+            context={"form": form}
         )
-        return redirect("product_view", pk=product.pk)
 
 
 def delete(request, *args, pk, **kwargs):
     product = get_object_or_404(Product, pk=pk)
-    product.delete()
-    return redirect("products_view")
+    if request.method == "GET":
+        return render(request, "products_delete.html", context={"product": product})
+    else:
+        product.delete()
+        return redirect("products_view")
 
 
 def product_edit_view(request, pk):
     product = get_object_or_404(Product, pk=pk)
-    if request.method == "POST":
-        form = ProductForm(request.POST, request.FILES, instance=product)
+    if request.method == "GET":
+        form = ProductForm(instance=product)
+        return render(
+            request,
+            "product_edit_view.html",
+            context={"form": form}
+        )
+    else:
+        form = ProductForm(request.POST, instance=product)
         if form.is_valid():
             form.save()
             return redirect("product_view", pk=product.pk)
-    else:
-        form = ProductForm(instance=product)
-    return render(request, "product_edit_view.html", {"form": form})
+        return render(
+            request,
+            "product_edit_view.html",
+            {"form": form}
+        )
 
 
 def product_view(request, *args, pk, **kwargs):

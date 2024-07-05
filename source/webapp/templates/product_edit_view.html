@@ -3,11 +3,9 @@
 {% endblock %}
 {% block content %}
 
-<h1>Edit Product</h1>
+<h1>Изменение продукта</h1>
 
-<form action="" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Edit Product"/>
+<form action="" method="post">
+    {% include 'partial/product_form.html' with button_text='изменить' %}
 </form>
 {% endblock %}
