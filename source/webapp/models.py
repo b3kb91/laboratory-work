@@ -1,3 +1,4 @@
+from django.core.validators import MinValueValidator
 from django.db import models
 
 
@@ -20,6 +21,7 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     price = models.DecimalField(max_digits=7, decimal_places=2, null=False, blank=False)
     image = models.URLField(null=False, blank=False)
+    remains = models.PositiveIntegerField(null=False, blank=False, verbose_name="Остаток", default=0)
     category = models.ForeignKey(
         "webapp.Category",
         on_delete=models.RESTRICT,

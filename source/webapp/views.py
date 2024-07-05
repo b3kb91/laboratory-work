@@ -8,26 +8,6 @@ def index(request):
     return render(request, 'products_view.html', context={"products": products})
 
 
-def product_view(request, *args, pk, **kwargs):
-    product = get_object_or_404(Product, pk=pk)
-    return render(request, "product_view.html", context={"product": product})
-
-
-def category_add_view(request):
-    if request.method == "GET":
-        return render(request, "category_add_view.html")
-    else:
-        description = request.POST.get("description")
-        if description == '':
-            description = None
-
-        category = Category.objects.create(
-            title=request.POST.get("title"),
-            description=description
-        )
-        return redirect("products_view")
-
-
 def product_add_view(request):
     if request.method == "GET":
         categories = Category.objects.all()
@@ -48,7 +28,7 @@ def product_add_view(request):
         return redirect("product_view", pk=product.pk)
 
 
-def delete(request, *args, pk, **kwargs):
+def product_delete(request, *args, pk, **kwargs):
     product = get_object_or_404(Product, pk=pk)
     product.delete()
     return redirect("products_view")
@@ -64,3 +44,23 @@ def product_edit_view(request, pk):
     else:
         form = ProductForm(instance=product)
     return render(request, "product_edit_view.html", {"form": form})
+
+
+def product_view(request, *args, pk, **kwargs):
+    product = get_object_or_404(Product, pk=pk)
+    return render(request, "product_view.html", context={"product": product})
+
+
+def category_add_view(request):
+    if request.method == "GET":
+        return render(request, "category_add_view.html")
+    else:
+        description = request.POST.get("description")
+        if description == '':
+            description = None
+
+        category = Category.objects.create(
+            title=request.POST.get("title"),
+            description=description
+        )
+        return redirect("products_view")
