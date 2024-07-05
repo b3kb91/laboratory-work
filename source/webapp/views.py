@@ -28,7 +28,7 @@ def product_add_view(request):
         return redirect("product_view", pk=product.pk)
 
 
-def product_delete(request, *args, pk, **kwargs):
+def delete(request, *args, pk, **kwargs):
     product = get_object_or_404(Product, pk=pk)
     product.delete()
     return redirect("products_view")
