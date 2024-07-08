@@ -1,11 +1,20 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from webapp.forms import ProductForm
+from webapp.forms import ProductForm, SearchProduct
 from webapp.models import Product, Category
 
 
 def index(request):
-    products = Product.objects.order_by('-created_at')
-    return render(request, 'products_view.html', context={"products": products})
+    if request.method == 'GET':
+        form = SearchProduct(request.GET)
+        if form.is_valid():
+            title_user = form.cleaned_data['title']
+            search = Product.objects.filter(remains__gt=1, title__icontains=title_user).order_by("-category", "-title")
+        else:
+            search = Product.objects.filter(remains__gt=1).order_by("-category", "-title")
+    else:
+        form = SearchProduct()
+        search = Product.objects.filter(remains__gt=1).order_by("-category", "-title")
+    return render(request, 'products_view.html', context={"form": form, "search": search})
 
 
 def product_add_view(request):
@@ -56,8 +65,7 @@ def product_edit_view(request, pk):
         return render(
             request,
             "product_edit_view.html",
-            {"form": form}
-        )
+            {"form": form})
 
 
 def product_view(request, *args, pk, **kwargs):
