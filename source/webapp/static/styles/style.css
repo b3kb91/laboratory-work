@@ -43,10 +43,11 @@
     border: solid 1px gray;
 }
 
-.paginator{
+.paginator {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 20vh;
 }
+

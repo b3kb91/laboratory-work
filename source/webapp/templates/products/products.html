@@ -23,7 +23,12 @@
                     </h5>
                         <p class="card-text"><strong>{{ product.category.title }}</strong><br></p>
                         <p class="card-text"><strong>Price: {{ product.price }}$</strong><br></p>
-                        <a href="{% url 'detail' product.pk %}" class="card-link mt-auto">see more>>></a>
+                        <a href="{% url 'delete' product.pk %}"><i class="fa-solid fa-trash text-danger fa-2xl"></i></a>
+                        <a href="{% url 'detail' product.pk %}"><i class="fa-solid fa-circle-info fa-2xl"></i></a>
+                        <form method="post" action="{% url 'basket_add' product.pk %}">
+                            {% csrf_token %}
+                            <br><button type="submit" class="btn btn-success">В корзину</button>
+                        </form>
                     </div>
                 </div>
             </div>

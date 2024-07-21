@@ -10,10 +10,13 @@
             <p class="card-text"><strong>Remains:</strong><br>{{ product.remains }}$</p>
             <p class="card-text"><strong>Description:</strong><br>{{ product.description }}</p>
             <p class="card-text"><strong>Дата:</strong><br>{{ product.created_at }}</p>
-            <a href="{% url 'update' product.pk %}">
-                <i class="fa-2x fa-sharp fa-regular fa-pen-to-square"></i>
-            </a>
-            <a href="{% url 'delete' product.pk %}" class="fa-2x fa-solid fa-trash text-danger"></a>
+            <a href="{% url 'update' product.pk %}"><i class="fa-sharp fa-regular fa-pen-to-square fa-2xl"></i></a>
+            <a href="{% url 'delete' product.pk %}" class="fa-solid fa-trash text-danger fa-2xl"></a>
+            <form method="post" action="{% url 'basket_add' product.pk %}">
+                {% csrf_token %}
+                <br>
+                <button type="submit" class="btn btn-success">В корзину</button>
+            </form>
         </div>
     </div>
 {% endblock %}
