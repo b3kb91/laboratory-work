@@ -20,9 +20,4 @@ class ProductForm(forms.ModelForm):
         }
         widgets = {
             'description': widgets.Textarea(attrs={'cols': 20, "rows": 5}),
-            'created_at': widgets.DateInput(attrs={"type": "date"}),
-        }
-
-
-class SearchProduct(forms.Form):
-    title = forms.CharField(label='Поиск товара', max_length=200, required=False)
+            'created_at': widgets.DateInput(attrs={"type": "date"})}

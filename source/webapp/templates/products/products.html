@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "products/../base.html" %}
 
 {% block title %}
     <title>Products Views</title>
@@ -7,13 +7,13 @@
 <br>
 
 {% block content %}
-    <form method="GET" action="">
-        {% csrf_token %}
-        <br>{{ form.as_p }}
-        <button type="submit">Найти</button>
+    <br>
+    <form method="get">
+        {% include "partial/search_form.html" with form=search_form %}
     </form>
+    <br>
     <div class="row">
-        {% for product in search %}
+        {% for product in products %}
             <div class="class=col-12 col-md-6 col-lg-3 mb-3">
                 <div class="card mt-3 text-center bg-white rounded-4 h-100 d-flex flex-column align-items-center "
                      style="width: 18rem;">
@@ -23,11 +23,20 @@
                     </h5>
                         <p class="card-text"><strong>{{ product.category.title }}</strong><br></p>
                         <p class="card-text"><strong>Price: {{ product.price }}$</strong><br></p>
-                        <a href="{% url 'product_view' product.pk %}" class="card-link mt-auto">see more>>></a>
+                        <a href="{% url 'detail' product.pk %}" class="card-link mt-auto">see more>>></a>
                     </div>
                 </div>
             </div>
         {% endfor %}
+    </div>
+{% endblock %}
+
+{% block paginator %}
+
+    <div class="paginator mt-4">
+        {% if is_paginated %}
+            {% include "partial/pagination.html" %}
+        {% endif %}
     </div>
 {% endblock %}
 </body>
