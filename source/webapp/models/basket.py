@@ -3,7 +3,7 @@ from django.urls import reverse
 
 
 class Basket(models.Model):
-    product = models.ForeignKey('webapp.Product', on_delete=models.RESTRICT,
+    product = models.ForeignKey('webapp.Product', on_delete=models.CASCADE,
                                 verbose_name="Продукт",
                                 related_name="baskets", )
     quantity = models.PositiveIntegerField(verbose_name='Количество', default=1)

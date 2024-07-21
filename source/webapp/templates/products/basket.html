@@ -18,7 +18,8 @@
                     </h5>
                         <p class="card-text"><strong>Цена: {{ basket.product.price }}$</strong><br></p>
                         <p class="card-text"><strong>Количество в корзине: {{ basket.quantity }}</strong><br></p>
-                        {#                    <p class="card-text"><strong>Сумма: {{ basket.quantity * basket.product.price }}$</strong><br></p>#}
+                        <p class="card-text"><strong>Сумма: {% widthratio basket.quantity 1 basket.product.price  %}$</strong><br>
+                        </p>
                         {#                    <h5>Итого: {{ baskets|sum:"total_price" }}</h5>#}
                         <form action="{% url 'basket_delete' basket.pk %}" method="post">
                             {% csrf_token %}
