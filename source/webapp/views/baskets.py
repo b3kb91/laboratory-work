@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, get_object_or_404, render
 from django.views import View
+from django.db.models import Sum, F
 
 from webapp.models import Product, Basket
 
@@ -23,9 +24,11 @@ class BasketAdd(View):
 
 
 class BasketView(View):
+
     def get(self, request, *args, **kwargs):
         baskets = Basket.objects.all()
-        return render(request, 'products/basket.html', {'baskets': baskets})
+        total = baskets.aggregate(total_sum=Sum(F('quantity') * F('product__price')))['total_sum']
+        return render(request, 'products/basket.html', {'baskets': baskets, 'total': total})
 
 
 class BasketDelete(View):

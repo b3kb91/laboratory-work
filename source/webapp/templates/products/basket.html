@@ -18,9 +18,8 @@
                     </h5>
                         <p class="card-text"><strong>Цена: {{ basket.product.price }}$</strong><br></p>
                         <p class="card-text"><strong>Количество в корзине: {{ basket.quantity }}</strong><br></p>
-                        <p class="card-text"><strong>Сумма: {% widthratio basket.quantity 1 basket.product.price  %}$</strong><br>
-                        </p>
-                        {#                    <h5>Итого: {{ baskets|sum:"total_price" }}</h5>#}
+                        <p class="card-text">
+                            <strong>Сумма: {% widthratio basket.quantity 1 basket.product.price %}$</strong><br>
                         <form action="{% url 'basket_delete' basket.pk %}" method="post">
                             {% csrf_token %}
                             <br>
@@ -29,9 +28,16 @@
                     </div>
                 </div>
             </div>
-
         {% endfor %}
+        <div class="mt-3">
+            <h3>Итого: {{ total }}$</h3>
+        </div>
+        <h2>Оформление заказа</h2>
+        <form method="post" action="{% url 'order_create' %}">
+            {% csrf_token %}
+            {{ order_form.as_p }}
+            <button type="submit">Оформить заказ</button>
+        </form>
     </div>
+
 {% endblock %}
-</body>
-</html>

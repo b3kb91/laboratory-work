@@ -5,7 +5,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('webapp', '0006_alter_basket_quantity'),
     ]
@@ -14,6 +13,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='basket',
             name='product',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='baskets', to='webapp.product', verbose_name='Продукт'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='baskets',
+                                    to='webapp.product', verbose_name='Продукт'),
         ),
     ]
