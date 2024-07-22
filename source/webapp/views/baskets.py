@@ -45,3 +45,6 @@ class BasketDelete(View):
             self.basket.delete()
         return redirect('basket')
 
+        # старое удаление
+        # self.basket.delete()
+        # return redirect('basket')
