@@ -6,12 +6,14 @@ admin.site.register(Category)
 
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'phone', 'created_at']
+    list_display = ['id', 'name', 'phone', 'created_at', 'address']
     sortable_by = ['-created_at']
     list_display_links = ["address"]
     search_fields = ['address', 'name']
     fields = ['id', 'name', 'created_at', 'phone']
     readonly_fields = ['created_at']
+
+admin.site.register(Order, OrderAdmin)
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -23,4 +25,4 @@ class ProductAdmin(admin.ModelAdmin):
     readonly_fields = ['created_at']
 
 
-admin.site.register(Product, ProductAdmin, Order, OrderAdmin)
+admin.site.register(Product, ProductAdmin)

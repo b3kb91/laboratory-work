@@ -38,5 +38,10 @@ class BasketDelete(View):
         return super().dispatch(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
-        self.basket.delete()
+        if self.basket.quantity > 1:
+            self.basket.quantity -= 1
+            self.basket.save()
+        elif self.basket.quantity == 1:
+            self.basket.delete()
         return redirect('basket')
+
